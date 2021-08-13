@@ -28,7 +28,8 @@ class Exp(MyExp):
 
         dataset = VOCDetection(
             data_dir=os.path.join(get_yolox_datadir(), "VOCdevkit"),
-            image_sets=[('2007', 'trainval'), ('2012', 'trainval')],
+            # image_sets=[('2007', 'trainval'), ('2012', 'trainval')],
+            image_sets=[('_RDDC', 'train'), ('_RDDC', 'val')],
             img_size=self.input_size,
             preproc=TrainTransform(
                 rgb_means=(0.485, 0.456, 0.406),
@@ -82,7 +83,7 @@ class Exp(MyExp):
 
         valdataset = VOCDetection(
             data_dir=os.path.join(get_yolox_datadir(), "VOCdevkit"),
-            image_sets=[('2007', 'test')],
+            image_sets=[('_RDDC', 'test')],
             img_size=self.test_size,
             preproc=ValTransform(
                 rgb_means=(0.485, 0.456, 0.406),
